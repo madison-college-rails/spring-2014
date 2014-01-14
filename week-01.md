@@ -198,4 +198,3 @@ If you've followed the above, you should be able to create a sample Rails app:
 ## Homework
 
 Your homework for the first class is to send me a screenshot of your "Welcome aboard" page.
-
