@@ -160,6 +160,27 @@ If you've followed the above, you should be able to create a sample Rails app:
 
         $ createuser -s -P sample
 
+    For Ubuntu, you'll need to set `host` and `password` properties in the
+    `development` and `test` sections of `config/database.yml`:
+
+        development:
+          adapter: postgresql
+          encoding: unicode
+          database: sample_development
+          pool: 5
+          username: sample
+          password: sample
+          host: localhost
+
+       test:
+          adapter: postgresql
+          encoding: unicode
+          database: sample_test
+          pool: 5
+          username: sample
+          password: sample
+          host: localhost
+
 5.  Change to the sample folder:
 
         $ cd sample
