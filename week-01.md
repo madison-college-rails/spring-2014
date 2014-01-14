@@ -172,7 +172,7 @@ If you've followed the above, you should be able to create a sample Rails app:
           password: sample
           host: localhost
 
-       test:
+        test:
           adapter: postgresql
           encoding: unicode
           database: sample_test
