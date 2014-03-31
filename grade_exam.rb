@@ -1,7 +1,7 @@
 class Exam
   attr_accessor :filename
 
-  ANSWER_PATTERN = /^(?<number>\d+)\.\s+(?<answer>\w)$/
+  ANSWER_PATTERN = /^(?<number>\d+)\.\s*(?<answer>\w)$/
 
   def initialize(filename)
     @filename = filename
