@@ -44,18 +44,26 @@ class Exam
 end
 
 def main
-  filename = ARGV[0] || 'exam1.txt'
-  exam = Exam.new(filename)
-  grade = exam.grade
+  filenames = Dir.glob('exams/*.txt')
+  filenames = filenames.select { |filename| File.basename(filename) != 'answers.txt' }
 
-  incorrect = grade.select do |key, values|
-    !values[:correct]
-  end
+  filenames.sort! { |a, b| File.mtime(a) <=> File.mtime(b) }
 
-  puts "Grade for #{filename}: #{grade.size - incorrect.size} / #{grade.size}"
+  filenames.each do |filename|
+    exam = Exam.new(filename)
+    grade = exam.grade
 
-  incorrect.each do |key, values|
-    puts "#{key}: #{values[:correct]} (actual: #{values[:actual]}, expected: #{values[:expected]})"
+    incorrect = grade.select do |key, values|
+      !values[:correct]
+    end
+
+    puts "Grade for #{filename}: #{grade.size - incorrect.size} / #{grade.size}"
+
+    incorrect.each do |key, values|
+      puts "#{key}: #{values[:correct]} (actual: #{values[:actual]}, expected: #{values[:expected]})"
+    end
+
+    puts
   end
 end
 
